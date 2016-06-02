@@ -3,7 +3,7 @@ NZSE Project
 
 Authors `R0xXxor` and `mr-sicher`
 
-This project is a project build for the course *NZSE* at *h-da*
+This project is built for the course *NZSE* at *h-da*
 
 
 TODO-List
