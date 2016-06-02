@@ -1,0 +1,65 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorControlActivated</item>
+        <item name="background">@color/background</item>
+        <!--<item name="android:alertDialogStyle">@style/CustomDialogTheme</item>-->
+        <!--Switch_thumbTint
+        Switch_thumbTintMode
+        colorSwitchThumbNormal-->
+
+    </style>
+<!--
+https://sites.google.com/site/androidhowto/how-to-1/customize-alertdialog-theme
+
+-->
+    <style name="CustomDialogTheme" parent="Theme.AppCompat.Dialog">
+
+
+        <item name="android:textColor">@color/accent_text</item>
+        <item name="android:typeface">sans</item>
+        <!--<item name="android:textSize">10sp</item>-->
+        <item name="android:background">@color/background</item>
+        <item name="android:colorControlHighlight">@color/colorControlActivated</item><!--this might not work-->
+        <item name="android:colorControlActivated">@color/colorControlActivated</item>
+        <item name="android:colorAccent">@color/colorControlActivated</item>
+
+    </style>
+
+
+
+
+    <!-- http://blog.supenta.com/2014/07/02/how-to-style-alertdialogs-like-a-pro/ -->
+
+    <!--<style name="Theme_Sphinx_Dialog_Alert" parent="@style/AlertDialog.AppCompat">
+        <item name="android:windowTitleStyle">@style/DialogWindowTitle.Sphinx</item>
+    </style>
+
+    <style name="DialogWindowTitle.Sphinx" parent="@style/Theme.AppCompat.Dialog.Alert">
+        <item name="android:textAppearance">@style/TextAppearance.Sphinx.DialogWindowTitle</item>
+    </style>
+
+    <style name="TextAppearance.Sphinx.DialogWindowTitle" parent="@android:style/TextAppearance.Holo.DialogWindowTitle">
+        <item name="android:textColor">@android:color/holo_green_light</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme_Sphinx_Dialog_Alert" parent="@style/Theme_Holo_Dialog_Alert">
+        ...
+        <item name="android:textColorPrimary">@android:color/holo_orange_light</item>
+        <item name="android:textAppearanceMedium">@style/TextAppearance.Sphinx.Medium</item>
+    </style>
+
+    <style name="TextAppearance.Sphinx.Medium" parent="@android:style/TextAppearance.Holo.Medium">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">14sp</item>
+    </style>-->
+
+    <color name="white">#FFF</color>
+</resources>

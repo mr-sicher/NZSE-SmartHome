@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ImageView
+        android:id="@+id/imageDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dp"/>
+
+    <TextView
+        android:id="@+id/textDialog"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_toRightOf="@+id/imageDialog"/>
+    <TextView
+        android:id="@+id/inactive_text"
+        android:text="@string/inactive_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        android:layout_toRightOf="@id/imageDialog"
+        android:layout_below="@id/textDialog" />
+    <Switch
+        android:id="@+id/active"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/inactive_text"
+        android:layout_below="@id/textDialog"/>
+    <TextView
+        android:id="@+id/active_text"
+        android:text="@string/active_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        android:layout_toRightOf="@id/active"
+        android:layout_below="@id/textDialog" />
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deleteButton"
+        android:layout_below="@+id/imageDialog"
+        />
+    <Button
+        android:id="@+id/okayButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/okayButton"
+        android:layout_below="@+id/imageDialog"
+        android:layout_toRightOf="@id/deleteButton"
+        />
+    <Button
+        android:id="@+id/aboutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/aboutButton"
+        android:layout_below="@+id/imageDialog"
+        android:layout_toRightOf="@id/okayButton"
+        />
+
+</RelativeLayout>

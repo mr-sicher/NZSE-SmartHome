@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">SicherSmartHome</string>
+    <string name="app_title">TITEL</string>
+    <string name="room_name">RoomName</string>
+    <string name="deleteButton">Löschen</string>
+    <string name="okayButton">Okay</string>
+    <string name="aboutButton">Abbrechen</string>
+    <string name="rooms">Räume</string>
+    <string name="bearbeiten">bearbeiten</string>
+    <string name="active_text">An</string>
+    <string name="inactive_text">Aus</string>
+    <string name="span_heating">12</string>
+    <string name="room_delete_message">Wollen Sie den Raum wirklich löschen?</string>
+    <string name="device_delete_message">Wollen Sie dieses Gerät wirklich löschen?</string>
+    <string name="temperature">Temperatur</string>
+    <string name="default_temperature">10°C</string>
+
+
+
+
+
+    <string name="json_room_name">room name</string>
+    <string name="json_rooms">rooms</string>
+    <string name="json_device_type">device type</string>
+    <string name="json_device_type_light">type light</string>
+    <string name="json_device_type_heating">type heating</string>
+    <string name="json_device_name">device name</string>
+    <string name="json_device_room">device room</string>
+    <string name="json_devices">devices</string>
+    <string name="json_device_active">device active</string>
+    <string name="json_device_heating_temperature">heating temperature</string>
+    <string name="json_file">smarthomesave.json</string>
+    <string name="all_off">Alles aus</string>
+
+
+    <string-array name="spinner_type_available">
+        <item>Heizung</item>
+        <item>Licht</item>
+    </string-array>
+
+</resources>
