@@ -61,7 +61,6 @@ public class ShowRoomActivity extends SmartActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(ShowRoomActivity.this, "HELP HELP", Toast.LENGTH_SHORT).show();
                 Room room = (Room) parent.getItemAtPosition(position);
                 Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
                 intent.putExtra(getString(R.string.room_name), room.getName());
@@ -81,6 +80,7 @@ public class ShowRoomActivity extends SmartActivity {
                 Button cancel = (Button) dialog.findViewById(R.id.cancel_button);
                 builder.setView(dialog);
                 final AlertDialog alertDialog = builder.show();
+                alertDialog.setCancelable(false);
 
                 okay.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -134,13 +134,13 @@ public class ShowRoomActivity extends SmartActivity {
                 Toast.makeText(getApplicationContext(), "Alle Geräte ausgeschaltet", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.add_item:
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.CustomDialogTheme);
+                AlertDialog.Builder builder = new AlertDialog.Builder(dieses, R.style.CustomDialogTheme);
                 builder.setTitle("Neuer Raum");
-                final View dialog = LayoutInflater.from(this).inflate(R.layout.dialog_add_room, null);
+                final View dialog = LayoutInflater.from(dieses).inflate(R.layout.dialog_add_room, null);
 
                 builder.setView(dialog);
                 final AlertDialog alertDialog = builder.show();
+                alertDialog.setCancelable(false);
 
                 Button save = (Button) dialog.findViewById(R.id.btn_save);
                 save.setOnClickListener(new View.OnClickListener() {
@@ -174,4 +174,8 @@ public class ShowRoomActivity extends SmartActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+
+
 }

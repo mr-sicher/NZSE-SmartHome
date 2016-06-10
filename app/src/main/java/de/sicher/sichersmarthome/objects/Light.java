@@ -62,6 +62,8 @@ public class Light extends Device{
 
         builder.setView(dialog);
         final AlertDialog alertDialog = builder.show();
+        alertDialog.setCancelable(false);
+
         Button delete = (Button) dialog.findViewById(R.id.deleteButton);
         // if decline button is clicked, close the custom dialog
         delete.setOnClickListener(new View.OnClickListener() {

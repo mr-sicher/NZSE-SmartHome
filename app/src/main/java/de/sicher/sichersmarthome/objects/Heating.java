@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -111,6 +110,8 @@ public class Heating extends Device{
 
         builder.setView(dialog);
         final AlertDialog alertDialog = builder.show();
+        alertDialog.setCancelable(false);
+
         Button delete = (Button) dialog.findViewById(R.id.deleteButton);
         // if decline button is clicked, close the custom dialog
         delete.setOnClickListener(new View.OnClickListener() {

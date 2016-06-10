@@ -75,7 +75,6 @@ public class RoomActivity extends SmartActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(getApplicationContext(), "HELPHELP", Toast.LENGTH_SHORT).show();
                 Device device = (Device) parent.getItemAtPosition(position);
                 System.out.println(device.getName());
                 device.onClick(adapter, getApplicationContext());
@@ -153,6 +152,7 @@ public class RoomActivity extends SmartActivity {
 
                 builder.setView(dialog);
                 final AlertDialog alertDialog = builder.show();
+                alertDialog.setCancelable(false);
 
                 Button save = (Button) dialog.findViewById(R.id.btn_save);
                 save.setOnClickListener(new View.OnClickListener() {

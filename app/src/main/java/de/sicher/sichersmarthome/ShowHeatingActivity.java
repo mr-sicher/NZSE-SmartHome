@@ -22,6 +22,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import de.sicher.sichersmarthome.adapter.DeviceAdapter;
+import de.sicher.sichersmarthome.adapter.RoomAdapter;
 import de.sicher.sichersmarthome.handler.ObjectHandler;
 import de.sicher.sichersmarthome.objects.Device;
 import de.sicher.sichersmarthome.objects.Heating;
@@ -83,57 +84,127 @@ public class ShowHeatingActivity extends SmartActivity {
                 return true;
             case R.id.add_item:
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.CustomDialogTheme);
-                builder.setTitle("Neue Heizung");
-                final View dialog = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, null);
+                if(handler.getRooms().size() == 0){
 
-                final Spinner spinnerType = (Spinner) dialog.findViewById(R.id.spinner_type);
-                spinnerType.setVisibility(View.GONE);
+                    AlertDialog.Builder question = new AlertDialog.Builder(this, R.style.CustomDialogTheme);
+                    question.setTitle("Neuer Raum");
 
-                ArrayList<Room> myrooms = handler.getRooms();
-                String[] names = new String[myrooms.size()];
+                    final View questionView = LayoutInflater.from(this).inflate(R.layout.dialog_room_question, null);
+                    question.setView(questionView);
+                    final AlertDialog questionAlert = question.show();
+                    questionAlert.setCancelable(false);
 
-                for(int i = 0; i < myrooms.size(); i++){
-                    names[i] = myrooms.get(i).getName();
+                    Button questionOkay = (Button) questionView.findViewById(R.id.okay_button);
+                    questionOkay.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            questionAlert.dismiss();
+                            addRoomDialog(dieses);
+                        }
+                    });
+
+                    Button questionCancel = (Button) questionView.findViewById(R.id.cancel_button);
+                    questionCancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            questionAlert.dismiss();
+                        }
+                    });
+
+
+                }else {
+                    addDeviceDialog(dieses);
                 }
-
-                final Spinner spinnerRoom = (Spinner) dialog.findViewById(R.id.spinner_room);
-                ArrayAdapter<String> adapterRoom = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, names);
-                adapterRoom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerRoom.setAdapter(adapterRoom);
-
-                builder.setView(dialog);
-                final AlertDialog alertDialog = builder.show();
-
-                Button save = (Button) dialog.findViewById(R.id.btn_save);
-                save.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        EditText name = (EditText) dialog.findViewById(R.id.edit_name);
-                        if (name.getText().toString().equals(""))
-                            return;
-
-                        handler.addDevice(new Heating(name.getText().toString(), handler.getRoom(spinnerRoom.getSelectedItem().toString())));
-
-                        adapter = new DeviceAdapter(dieses, handler.getHeatings());//für die heizung in getHeatings ändern
-                        listView.setAdapter(adapter);
-                        adapter.notifyDataSetChanged();
-                        System.out.println("DONE");
-                        alertDialog.dismiss();
-
-                    }
-                });
-
-                Button chancel = (Button) dialog.findViewById(R.id.btn_cancel);
-                chancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void addRoomDialog(final Activity dieses){
+        AlertDialog.Builder builder = new AlertDialog.Builder(dieses, R.style.CustomDialogTheme);
+        builder.setTitle("Neuer Raum");
+        final View dialog = LayoutInflater.from(dieses).inflate(R.layout.dialog_add_room, null);
+
+        builder.setView(dialog);
+        final AlertDialog alertDialog = builder.show();
+        alertDialog.setCancelable(false);
+
+        Button save = (Button) dialog.findViewById(R.id.btn_save);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText name = (EditText) dialog.findViewById(R.id.edit_name);
+                if (name.getText().toString().equals(""))
+                    return;
+
+                Room newRoom = new Room(name.getText().toString());
+                handler.addRoom(newRoom);
+                alertDialog.dismiss();
+                addDeviceDialog(dieses);
+            }
+        });
+
+        Button chancel = (Button) dialog.findViewById(R.id.btn_cancel);
+        chancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
+
+    private void addDeviceDialog(final Activity dieses){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.CustomDialogTheme);
+        builder.setTitle("Neue Heizung");
+        final View dialog = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, null);
+
+        final Spinner spinnerType = (Spinner) dialog.findViewById(R.id.spinner_type);
+        spinnerType.setVisibility(View.GONE);
+
+        ArrayList<Room> myrooms = handler.getRooms();
+        String[] names = new String[myrooms.size()];
+
+        for (int i = 0; i < myrooms.size(); i++) {
+            names[i] = myrooms.get(i).getName();
+        }
+
+        final Spinner spinnerRoom = (Spinner) dialog.findViewById(R.id.spinner_room);
+        ArrayAdapter<String> adapterRoom = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, names);
+        adapterRoom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerRoom.setAdapter(adapterRoom);
+
+        builder.setView(dialog);
+        final AlertDialog alertDialog = builder.show();
+        alertDialog.setCancelable(false);
+
+        Button save = (Button) dialog.findViewById(R.id.btn_save);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText name = (EditText) dialog.findViewById(R.id.edit_name);
+                if (name.getText().toString().equals(""))
+                    return;
+
+                handler.addDevice(new Heating(name.getText().toString(), handler.getRoom(spinnerRoom.getSelectedItem().toString())));
+
+                adapter = new DeviceAdapter(dieses, handler.getHeatings());//für die heizung in getHeatings ändern
+                listView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                System.out.println("DONE");
+                alertDialog.dismiss();
+
+            }
+        });
+
+        Button cancel = (Button) dialog.findViewById(R.id.btn_cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
     }
 }

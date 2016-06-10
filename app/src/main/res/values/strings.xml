@@ -31,6 +31,8 @@
     <string name="json_device_heating_temperature">heating temperature</string>
     <string name="json_file">smarthomesave.json</string>
     <string name="all_off">Alles aus</string>
+    <string name="device_room_question">Wollen Sie einen neuen Raum hinzufügen?</string>
+    <string name="device_no_room_question">Es gibt keine Räume.</string>
 
 
     <string-array name="spinner_type_available">
