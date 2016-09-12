@@ -19,7 +19,7 @@ There is no feature for a server. Everything is just on the device.
 - [ ] Bug finding
 - [ ] Bugfixes
 - [ ] Ask people for ideas
-- [ ] Write exam
+- [x] Write exam
 
 - - -
 
