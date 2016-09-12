@@ -24,7 +24,7 @@ There is no feature for a server. Everything is just on the device.
 - - -
 
 #Supported Versions
-currently we only allow versions from 4.0.4 to 6.0.1
+Currently we only support versions from 4.0.4 to 6.0.1
 
 ```javascript
 minSdkVersion 15
